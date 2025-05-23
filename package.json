@@ -1,0 +1,24 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "expressjs",
+    "graphql",
+    "nodejs"
+  ],
+  "author": "Yoga Pratama",
+  "license": "MIT",
+  "description": "Simple GraphQL Server using ExpressJS",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0",
+    "graphql": "^16.11.0",
+    "graphql-http": "^1.22.4"
+  }
+}

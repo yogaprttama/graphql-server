@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GraphQL Server</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .field {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .field h2 {
+      margin-top: 0;
+      color: #2980b9;
+    }
+
+    .type {
+      font-weight: bold;
+      color: #555;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    code {
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GraphQL Server</h1>
+
+  <div class="field">
+    <h2>hello</h2>
+    <p><span class="type">Type:</span> <code>String</code></p>
+    <p>Returns a simple greeting message.</p>
+
+    <h3>Query:</h3>
+    <pre><code>{ 
+  hello 
+}</code></pre>
+
+    <h3>Response:</h3>
+    <pre><code>{
+  "data": {
+    "hello": "Hello, world!"
+  }
+}</code></pre>
+
+    <h3>Request:</h3>
+    <pre><code>curl -X POST http://localhost:3000/graphql \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ hello }"}'</code></pre>
+  </div>
+
+  <div class="field">
+    <h2>posts</h2>
+    <p><span class="type">Type:</span> <code>[Post]</code></p>
+    <p>Returns a list of all blog posts.</p>
+
+    <h3>Query:</h3>
+    <pre><code>{
+  posts {
+    id
+    title
+    content
+  }
+}</code></pre>
+
+    <h3>Response:</h3>
+    <pre><code>{
+  "data": {
+    "posts": [
+      {
+        "id": "1",
+        "title": "First Post",
+        "content": "This is the first post."
+      },
+      {
+        "id": "2",
+        "title": "Second Post",
+        "content": "This is the second post."
+      }
+    ]
+  }
+}</code></pre>
+
+    <h3>Request:</h3>
+    <pre><code>curl -X POST http://localhost:3000/graphql \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ posts { id title content } }"}'</code></pre>
+  </div>
+
+  <div class="field">
+    <h2>post</h2>
+    <p><span class="type">Type:</span> <code>Post</code></p>
+    <p>Returns a single post by its ID.</p>
+    <p><strong>Arguments:</strong></p>
+    <ul>
+      <li><code>id</code>: <code>ID</code> — The ID of the post</li>
+    </ul>
+
+    <h3>Query:</h3>
+    <pre><code>{
+  post(id: "1") {
+    id
+    title
+    content
+  }
+}</code></pre>
+
+    <h3>Response:</h3>
+    <pre><code>{
+  "data": {
+    "post": {
+      "id": "1",
+      "title": "First Post",
+      "content": "This is the first post."
+    }
+  }
+}</code></pre>
+
+    <h3>Request:</h3>
+    <pre><code>curl -X POST http://localhost:3000/graphql \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ post(id: \"1\") { id title content } }"}'</code></pre>
+  </div>
+
+</body>
+</html>
