@@ -2,6 +2,7 @@ import { GraphQLSchema, GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList
 import { createHandler } from 'graphql-http/lib/use/express';
 import express from 'express';
 import path from 'path';
+import { __dirname } from './utils.js';
 
 const app = express();
 const port = 3000;
